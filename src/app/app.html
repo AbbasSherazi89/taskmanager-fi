@@ -9,10 +9,16 @@
   <!-- Task List -->
   <app-task-list [tasks]="todoItem()" [heading]="'Todo'"></app-task-list>
   <!-- Task List -->
-  <app-task-list [tasks]="inprogressItem()" [heading]="'InProgress'"></app-task-list>
+  <app-task-list
+    [tasks]="inprogressItem()"
+    [heading]="'InProgress'"
+  ></app-task-list>
 
   <!-- Task List -->
-  <app-task-list [tasks]="completedItem()" [heading]="'Completed'"></app-task-list>
+  <app-task-list
+    [tasks]="completedItem()"
+    [heading]="'Completed'"
+  ></app-task-list>
 
   <!-- @for (item of todoItem(); track $index) {
     <p>{{item.task}} {{item.status}}</p>
