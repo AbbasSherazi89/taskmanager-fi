@@ -14,7 +14,7 @@ export class TaskService {
   }
   markAsStatus(text: string, updatedStatus: string) {
     this.tasks.update((existingCollection) => {
-      const findTask = existingCollection.find((x) => (x.task = text));
+      const findTask = existingCollection.find((x) => (x.task === text));
       if (findTask) {
         return [
           ...existingCollection.filter((x) => x.task !== text),
