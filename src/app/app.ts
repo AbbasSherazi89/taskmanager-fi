@@ -1,12 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, inject, signal } from '@angular/core';
+import { TaskForm } from './Components/task-form';
+import { TaskList } from './Components/task-list/task-list';
+import { TaskService } from './services/task-service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [TaskForm, TaskList],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('taskmanager');
+  taskService = inject(TaskService);
+  tasks = this.taskService.tasks;
+
+  todoItem = computed(() => {
+    const tasks = this.tasks();
+    return tasks.filter((x) => x.status === 'todo');
+  });
+   inprogressItem = computed(() => {
+    const tasks = this.tasks();
+    return tasks.filter((x) => x.status === 'inprogress');
+  }); 
+  completedItem = computed(() => {
+    const tasks = this.tasks();
+    return tasks.filter((x) => x.status === 'completed');
+  });
 }

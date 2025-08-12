@@ -1,0 +1,25 @@
+<form [formGroup]="taskForm" (ngSubmit)="submitNow()">
+  <div>
+    <label class="block" for="task">Task</label>
+    <textarea
+      class="w-full bg-slate-100 border-slate-500 rounded h-20"
+      id="task"
+      formControlName="task"
+    ></textarea>
+  </div>
+  <div>
+    <select class="w-full bg-slate-100 border-slate-300 rounded" formControlName="status">
+      <option value="todo">Todo</option>
+      <option value="inprogress">In progress</option>
+      <option value="completed">Completed</option>
+    </select>
+  </div>
+  <div>
+    <button
+      class="bg-amber-500 px-4 py-1 mt-2 rounded border-amber-900 cursor-pointer"
+      type="submit"
+    >
+      Add Task
+    </button>
+  </div>
+</form>
